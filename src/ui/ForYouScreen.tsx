@@ -27,9 +27,13 @@ export default function ForYouScreen({
   onOpenArticle: (title: string) => void;
 }) {
   const { t, lang } = useLang();
-  const [state, setState] = useState<FeedUiState>(EMPTY_FEED);
-  const loadingRef = useRef(false);
   const welcome = savedCount < 2;
+  // Start in the loading state when the feed can load at all, so the first
+  // paint never flashes the "no articles found" empty message.
+  const [state, setState] = useState<FeedUiState>(() =>
+    welcome ? EMPTY_FEED : { ...EMPTY_FEED, isLoading: true },
+  );
+  const loadingRef = useRef(false);
 
   const loadMore = useCallback(async () => {
     if (welcome) return;
@@ -79,6 +83,8 @@ export default function ForYouScreen({
   // show articles again instead of filtering everything as "already shown".
   useEffect(() => {
     if (welcome) return;
+    // Show the loader during the shown-buffer clear too, not just the fetch.
+    setState((s) => ({ ...s, isLoading: true, error: null }));
     clearShownArticles().then(() => loadMore());
   }, [loadMore, welcome]);
 
