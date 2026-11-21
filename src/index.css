@@ -25,11 +25,12 @@
   --heart: var(--strawberry);
   --error-bg: var(--strawberry);
 
-  /* Subtle sheen over colored surfaces: transparent until about 3/4 from
-   * the left, then a slightly lighter tint toward the right edge. The
-   * gradient axis is rotated ~20deg from horizontal, so the light comes
-   * from the right, slightly from above. */
-  --sheen: linear-gradient(70deg, transparent 75%, rgb(255 255 255 / 0.12) 100%);
+  /* Subtle two-way sheen over colored surfaces: a light tint coming from
+   * the right (axis rotated ~20deg from horizontal, rightmost quarter) and
+   * a dark tint from the bottom-left corner (mirrored axis). */
+  --sheen:
+    linear-gradient(70deg, transparent 75%, rgb(255 255 255 / 0.12) 100%),
+    linear-gradient(250deg, transparent 75%, rgb(0 0 0 / 0.18) 100%);
 }
 
 *,
