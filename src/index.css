@@ -204,7 +204,7 @@ body {
 }
 
 .list-item + .list-item {
-  border-top: 2px solid var(--bg);
+  border-top: 0;
 }
 
 .list-item:nth-child(10n + 1) { --tile: var(--strawberry); --tile-fg: var(--white); }
