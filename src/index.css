@@ -76,6 +76,7 @@ body {
   padding: 0 16px;
   box-sizing: border-box;
   background: var(--bg);
+  background-image: var(--sheen);
   color: var(--white);
   /* Subtle drop shadow on the bottom edge of the header. */
   box-shadow: 0 2px 8px color-mix(in srgb, #000 45%, transparent);
@@ -98,6 +99,22 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--primary-contrast);
+}
+
+/* Article and theme-feed appbars: the small logo stacked above the title
+ * (the appbar keeps its 80px height). */
+.appbar h1.with-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.appbar h1 .appbar-title {
+  font-size: 0.95rem;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Everything between the appbar and the tab bar: 14px is the standard

@@ -6,6 +6,7 @@ import { deleteSavedArticle, upsertSavedArticle } from "../data/db";
 import { RateLimitedError } from "../data/types";
 import { classifyArticleLink, normalizeArticleHtml } from "../data/wikihtml";
 import { SavedIcon, SavedOutlineIcon } from "./TabIcons";
+import Logo from "./Logo";
 import { useLang } from "../i18n";
 
 const repository = new ArticleRepository();
@@ -154,7 +155,10 @@ export default function ArticleView({
         <button className="icon-btn" aria-label={t("article.close")} onClick={onClose}>
           ←
         </button>
-        <h1>{title}</h1>
+        <h1 className="with-logo">
+          <Logo size={18} />
+          <span className="appbar-title">{title}</span>
+        </h1>
       </header>
 
       <button

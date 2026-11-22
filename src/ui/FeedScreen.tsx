@@ -6,6 +6,7 @@ import { RateLimitedError } from "../data/types";
 import type { Article } from "../data/types";
 import { ArticleCard, EMPTY_FEED, FeedStatus, type FeedUiState } from "./FeedParts";
 import PullToRefresh from "./PullToRefresh";
+import Logo from "./Logo";
 import { useLang } from "../i18n";
 
 const repository = new ArticleRepository();
@@ -131,7 +132,10 @@ export default function FeedScreen({
         <button className="icon-btn" onClick={onBack} title={t("feed.back")}>
           ←
         </button>
-        <h1>{themeName}</h1>
+        <h1 className="with-logo">
+          <Logo size={18} />
+          <span className="appbar-title">{themeName}</span>
+        </h1>
       </header>
 
       <main className="content">
