@@ -201,6 +201,10 @@ body {
   transition: transform 0.2s ease;
   user-select: none;
   -webkit-user-select: none;
+  /* Very small drop shadow on the bottom edge of each list item. Inset,
+   * because the rows sit flush: an outer shadow would be covered by the
+   * next tile. */
+  box-shadow: inset 0 -2px 4px rgb(0 0 0 / 0.25);
 }
 
 .list-item + .list-item {
